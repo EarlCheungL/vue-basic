@@ -61,7 +61,8 @@ export default {
       this.$http.post("https://vue-basic-8ede5.firebaseio.com/posts.json",{
         title:this.blog.title,
         content:this.blog.content,
-        userId:1
+        author:this.blog.author,
+        categories:this.blog.categories
       }).then(function(data){
         console.log(data);
         this.submmited=true;
