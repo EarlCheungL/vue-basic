@@ -8,8 +8,7 @@
         {{blog.title | to-uppercase}}
       </h2>
       </router-link>
-      <article>
-        {{blog.content | snippet}}
+      <article v-html="$options.filters.msg(blog.content)">
       </article>
     </div>
   </div>
@@ -18,6 +17,11 @@
 <script>
 export default {
   name: 'show-blogs',
+  filters:{
+        msg(msg) {
+            return msg.slice(0, 100) + "...";
+        }
+      },
   data () {
     return {
       blogs:[],

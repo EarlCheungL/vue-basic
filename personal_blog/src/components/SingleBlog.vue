@@ -1,7 +1,7 @@
 <template>
   <div id="single-blog">
     <h1>{{blog.title}}</h1>
-    <article>{{blog.content}}</article>
+    <article v-html="blog.content"></article>
     <p>作者:{{blog.author}}</p>
     <p>分类:</p>
     <ul>
@@ -42,7 +42,4 @@ export default {
     background: grey;
     border:1px dotted black;
   }
-h1{
-  text-transform : uppercase;
-}
 </style>

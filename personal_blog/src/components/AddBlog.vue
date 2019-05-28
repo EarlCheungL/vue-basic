@@ -5,7 +5,7 @@
      <label>博客标题</label>
      <input type="text" v-model="blog.title" required/>
      <label>博客内容</label>
-     <textarea v-model="blog.content"></textarea>
+     <vue-editor v-model="blog.content"></vue-editor>
      <label>博客分类</label>
      <div id="checkboxes">
        <label>Vue.js</label>
@@ -31,7 +31,7 @@
      <h3>博客总览</h3>
      <p>博客标题:{{blog.title}}</p>
      <p>博客内容:</p>
-     <p>{{blog.content}}</p>
+     <p v-html="blog.content"></p>
      <p>博客分类:</p>
      <ul>
        <li v-for="category in blog.categories" :key="category">{{category}}</li>
@@ -42,8 +42,12 @@
 </template>
 
 <script>
+import {VueEditor} from 'vue2-editor'
 export default {
   name: 'add-blog',
+  components: {
+      VueEditor
+    },
   data () {
     return {
       blog:{
@@ -63,8 +67,7 @@ export default {
         content:this.blog.content,
         author:this.blog.author,
         categories:this.blog.categories
-      }).then(function(data){
-        console.log(data);
+      }).then(function(){
         this.submmited=true;
       });
     }
